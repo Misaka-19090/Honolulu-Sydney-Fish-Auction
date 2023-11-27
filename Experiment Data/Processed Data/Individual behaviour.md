@@ -1,0 +1,21 @@
+- Dutch
+  - winner
+    - irrational: $p_{bid} > p_{value}$
+    - rational: $p_{bid} \le p_{value}$
+      - optimal: $\left| p_{predict} - p_{bid} \right| \le \varepsilon$
+      - non-optimal: $\left| p_{predict} - p_{bid} \right| \le \varepsilon$
+  - loser 
+    - greedy: $p_{dutch} < p_{predict}$
+    - normal
+- Contest
+  - should join: $p_{item} > p_{contest}$
+    - correct
+    - wrong
+  - should not join: $p_{item} \le p_{contest}$
+    - correct
+    - wrong
+- English
+  - irrational: $p_{leave} - p_{value} > \varepsilon$
+  - rational
+    - optimal: $\left| p_{leave} - p_{value} \right| \le \varepsilon$
+    - non-optimal: $ p_{value} - p_{leave} > \varepsilon$
