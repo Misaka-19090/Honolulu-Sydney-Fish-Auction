@@ -1,0 +1,141 @@
+{{ block title }}
+
+<title>
+    Auctioning
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'auction.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">{{ player.round_number }}</span> <span style="color: blue;">
+                {{ if player.round_number > session.config.num_test_rounds }}
+                (formal)
+                {{ else }}
+                (practice)
+                {{ endif }}
+            </span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    AUCTION PERIOD {{ player.round_number }} <span style="color: blue;">IS OPEN</span>
+    <br/><span style="color: blue;">PRICE IS GOING DOWN</span>
+</h2>
+
+<table class="boardtop">
+    <tr>
+        <td style="width: 50%;">Number of active participants</td>
+        <th id="num_active" style="width: 50%; font-size: 24px;"></th>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 25%;">Your value of the good</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Current price</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Your unadjusted earnings</td>
+    </tr>
+    <tr>
+        <th style="font-size: 24px;">{{ player.item_value }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x2212;</span></td>
+        <th style="font-size: 24px; color: blue;"><span id="current_price"></span><span class="blinking">&#9660;</span></th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th id="unadjusted_payoff"></th>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 50%;">Elapsed virtual time</td>
+        <th id="time_elapsed" style="width: 50%;"></th>
+    </tr>
+</table>
+
+<table class="boardbottom">
+    <tr>
+        <td style="width: 25%;">Your unadjusted earnings</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Time-adjustment factor</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <th style="width: 25%;">YOUR TIME-ADJUSTED EARNINGS IF YOU WERE TO BUY AT THIS PRICE</th>
+    </tr>
+    <tr>
+        <th id="unadjusted_payoff2"></th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x00D7;</span></td>
+        <th id="discount_factor"></th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th id="adjusted_payoff" style="font-size: 24px; color: blue;"></th>
+    </tr>
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+    <p id="warning_text" style="text-align: center; font-size: 16px;"></p>
+    <button type="button" class="btn_bid" id="btn" onclick="sendValue()">Bid</button>
+</div>
+
+<script>
+    
+    var refresh = setInterval(function(){refreshRequest()}, js_vars.refresh_freq);
+
+    function liveRecv(data) {
+
+        let {have_winner, num_active, current_price, time_elapsed, unadjusted_payoff, discount_factor, adjusted_payoff} = data;
+
+        if (have_winner == true || current_price <= js_vars.min_price){
+            clearInterval(refresh);
+            document.getElementById("form").submit();
+        }
+        else {
+            document.getElementById("num_active").innerText = num_active;
+            document.getElementById("current_price").innerText = current_price + " points ";
+            document.getElementById("time_elapsed").innerText = time_elapsed + "";
+            document.getElementById("unadjusted_payoff").innerText = unadjusted_payoff + " points";
+            document.getElementById("unadjusted_payoff2").innerText = unadjusted_payoff + " points";
+            document.getElementById("discount_factor").innerText = discount_factor;
+            document.getElementById("adjusted_payoff").innerText = adjusted_payoff.toFixed(1) + " points";
+        
+            if (adjusted_payoff < 0) {
+                document.getElementById("adjusted_payoff").style.color = "red";
+                document.getElementById("warning_text").innerHTML = "Warning: Your final earnings might be <b>negative</b> if you bid at this price!";
+                document.getElementById("warning_text").style.color = "red";
+            }
+            else {
+                document.getElementById("adjusted_payoff").style.color = "blue";
+                document.getElementById("warning_text").innerText = "";
+                document.getElementById("warning_text").style.color = "";
+            }
+        }
+        
+    }
+
+    function refreshRequest(){
+        liveSend(false);
+    }
+
+    function sendValue() {
+        document.getElementById('btn').disabled = "disabled";
+        liveSend(true);
+        clearInterval(refresh);
+    }
+</script>
+
+{{ endblock }}

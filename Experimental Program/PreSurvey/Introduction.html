@@ -1,0 +1,62 @@
+{{ block title }}
+
+<title>
+    Introduction
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'intro.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">None</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    INTRODUCTION
+</h2>
+
+<div class="section">
+    
+    <p class="newsection">
+        Welcome! You are about to participate in an experiment in the economics of market decision making. If you follow the instructions carefully and make good decisions, you can earn a considerable amount of MONEY that will be paid to you at the end of the experiment. During the experiment all units of account will be in points. Upon concluding the experiment the amount of points you earn will be converted into dollars at the conversion rate of <strong>{{ session.config.real_world_currency_per_point }}</strong> dollars per point. Your earnings plus a lump sum amount of <strong>{{ session.config.participation_fee }}</strong> dollars will be paid to you in private.
+    </p>
+    <p>
+        Do not communicate with the other participants except according to the specific rules of the experiment. If you have a question, feel free to raise your hand. We will answer your question in private.
+    </p>
+    <p>
+        From this point forward, you will be referred to by your <em>Participant Label</em>. You participant label will be displayed on the top of your computer screen at all times during the experiment. 
+    </p>
+    <p>
+        This experiment will consist of several parts. Your earnings from the experiment will be equal to the sum of earnings from all parts.
+    </p>
+    <p>
+        We will give you the instructions for Part 1 now.
+    </p>
+</div>
+
+<h2>
+    EXPERIMENT INSTRUCTIONS (Part 1)
+</h2>
+
+<div class="next">
+    {{ next_button }}
+</div>   
+ 
+{{ endblock }}

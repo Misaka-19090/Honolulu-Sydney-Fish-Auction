@@ -1,0 +1,110 @@
+body {
+    background-color: white;
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+h3 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 1em;
+}
+strong.s_leave {
+    color: white;
+    background-color: darkorange;
+    border: 0;
+    border-radius: 3px;
+    padding: 1px 5px;
+}
+strong.s_bid {
+    color: white;
+    background-color: blue;
+    border: 0;
+    border-radius: 3px;
+    padding: 1px 5px;
+}
+strong.s_active {
+    color: darkorange;
+}
+button.btn_bid {
+    width: 100px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    background-color: dodgerblue;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+button.btn_bid:hover {
+    background-color: blue;
+}
+button.btn_leave {
+    width: 100px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    background-color: orange;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    -moz-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+button.btn_leave:hover {
+    background-color: darkorange;
+}
+button:disabled {
+    background-color: dimblack;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+span.blinking {
+    animation: blink 1s linear infinite;
+    -webkit-animation: blink 1s linear infinite;
+    -moz-animation: blink 1s linear infinite;
+}
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 1;}
+    50.01% {opacity: 0;}
+    100% {opacity: 0;}    
+}
+table.boardtop {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 2px dashed lightgrey;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+    width: 100%;
+    box-shadow: 8px 0 4px -4px rgba(0, 0, 0, 0.2), -8px 0 4px -4px rgba(0, 0, 0, 0.2), 0 -8px 4px -4px rgba(0, 0, 0, 0.2);
+}
+table.boardmiddle {
+    border-bottom: 2px dashed lightgrey;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+    width: 100%;
+    box-shadow: 8px 0 4px -4px rgba(0, 0, 0, 0.2), -8px 0 4px -4px rgba(0, 0, 0, 0.2);
+    
+}
+table.boardbottom {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+    width: 100%;
+    box-shadow: 8px 0 4px -4px rgba(0, 0, 0, 0.2), -8px 0 4px -4px rgba(0, 0, 0, 0.2), 0 8px 4px -4px rgba(0, 0, 0, 0.2);
+}
+table.playerinfo {
+    width: 100%;
+    margin-bottom: 20px;
+}

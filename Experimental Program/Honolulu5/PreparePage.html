@@ -1,0 +1,64 @@
+{{ block title }}
+
+<title>
+    Auction is going to start
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'prep_and_result.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+{{ if player.round_number > session.config.num_test_rounds }}
+<p style="text-align: center; font-size: 16px; color: blue;">
+    This is a <strong>formal period</strong>. Your earnings from this period will be added to your cumulative payoff.
+</p>
+{{ else }}
+<p style="text-align: center; font-size: 16px; color: blue;">
+    This is a <strong>practice period</strong>. You will receive <strong>no earnings</strong> for this period.
+</p>
+{{ endif }}
+
+<table style="border: 0; border-collapse: separate; border-spacing: 10px 0px; width: 100%; margin-bottom: 20px;">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">{{ player.round_number }}</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    AUCTION PERIOD {{ player.round_number }} WILL START SOON
+</h2>
+
+<table class="board">
+    <tr>
+        <td style="width: 50%;">Your value of the good</td>
+        <td style="width: 50%;">Time-adjustment factor</td>
+    </tr>
+    <tr>
+        <th style="font-size: 24px;">{{ player.item_value }}</th>
+        <th style="font-size: 24px;">{{ discount_b }} percent</th>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>your positive earnings will decrease by {{ discount_b }}% every tick of the virtual clock, and negative earnings (losses) will grow by {{ discount_b }}% every tick of the virtual clock.</td>
+    </tr>
+</table>
+
+<div style="text-align: center; margin: 30px;">
+    <button class="otree-btn-next btn btn-primary">Ready</button>
+</div>
+
+{{ endblock }}

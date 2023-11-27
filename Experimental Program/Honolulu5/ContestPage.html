@@ -1,0 +1,172 @@
+{{ block title }}
+
+<title>
+    Auctioning
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'auction.css' }}" />
+    
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">{{ player.round_number }}</span> <span style="color: blue;">
+                {{ if player.round_number > session.config.num_test_rounds }}
+                (formal)
+                {{ else }}
+                (practice)
+                {{ endif }}
+            </span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+    {{ if group.have_dutch_winner == 0 }}
+    <h2>
+        AUCTION PERIOD {{ player.round_number }} <span style="color: green;">IS OPEN</span>
+        <br/><span style="color: green;">ANOTHER CHANCE TO BID</span>
+    </h2>
+    <p style="text-align: center; font-size: 16px;">
+        The price has stopped dropping, and the good is unassigned. 
+        <br>Press <strong class="s_bid">Bid</strong> if you want to buy at this price, or <strong class="s_leave">Leave</strong> to exit the auction.
+    </p>
+    {{ endif }}
+
+    {{ if player.is_dutch_winner == 1 and group.have_dutch_winner == 1 }}
+    <h2>
+        AUCTION PERIOD {{ player.round_number }} <span style="color: green;">IS OPEN</span>
+        <br/><span style="color: green;">ANOTHER CHANCE FOR OTHERS TO BID</span>
+    </h2>
+    <p style="text-align: center; font-size: 16px;">
+        You are <strong>provisionally assigned</strong> the good, but you can still be challenged by other participants.
+    </p>
+    {{ endif }}
+    
+    {{ if player.is_dutch_winner == 0 and group.have_dutch_winner == 1 }}
+    <h2>
+        AUCTION PERIOD {{ player.round_number }} <span style="color: green;">IS OPEN</span>
+        <br/><span style="color: green;">ANOTHER CHANCE TO BID</span>
+    </h2>
+    <p style="text-align: center; font-size: 16px;">
+        Another participant is provisionally assigned the good, but you can still bid. 
+        <br>Press <strong class="s_bid">Bid</strong> if you want to buy at this price, or <strong class="s_leave">Leave</strong> to exit the auction.
+    </p>
+    {{ endif }}
+
+<table class="boardtop">
+    <tr>
+        <td style="width: 50%;">Number of active participants</td>
+        <th id="num_active" style="width: 50%; font-size: 24px;"></th>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 25%;">Your value of the good</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Current price</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Your unadjusted earnings if you buy at this price</td>
+    </tr>
+    <tr>
+        <th style="font-size: 24px;">{{ player.item_value }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x2212;</span></td>
+        <th style="font-size: 24px; color: green;">{{ dutch_price }} points</th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th>{{ unadjusted_payoff }} points</th>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 50%;">Elapsed virtual time</td>
+        <th style="width: 50%;">{{ time_elapsed }}</th>
+    </tr>
+</table>
+
+<table class="boardbottom">
+    <tr>
+        <td style="width: 25%;">Your unadjusted earnings if you buy at this price</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Time-adjustment factor</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <th style="width: 25%;">YOUR TIME-ADJUSTED EARNINGS IF YOU BUY AT THIS PRICE</th>
+    </tr>
+    <tr>
+        <th>{{ unadjusted_payoff }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x00D7;</span></td>
+        <th>{{ discount_factor }}</th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        {{ if adjusted_payoff > 0 }}
+        <th style="font-size: 24px; color: green;">{{ adjusted_payoff|to1 }} points</th>
+        {{ else }}
+        <th style="font-size: 24px; color: red;">{{ adjusted_payoff|to1 }} points</th>
+        {{ endif }}
+    </tr>
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+    {{ if adjusted_payoff < 0 }}
+    <p style="color: red;">Warning: Your final earnings might be <b>negative</b> if you bid at this price!</p>
+    {{ endif }}
+    <button type="button" class="btn_bid" id="btn1" onclick="sendValue1()" disabled>Bid</button>
+    <button type="button" class="btn_leave" id="btn2" onclick="sendValue2()" disabled>Leave</button>
+</div>
+
+<div>
+    <span id="timeout"></span>
+</div>
+
+<script>
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        liveSend("init");
+    });
+
+    function liveRecv(data) {
+
+        let {status, num_active, num_no_decision} = data;
+        
+        document.getElementById("num_active").innerText = num_active;
+        if (num_no_decision <= 0) {
+            document.getElementById("form").submit();
+        }
+        else {
+            if (status != 0) {
+                document.getElementById('btn1').disabled = "disabled";
+                document.getElementById('btn2').disabled = "disabled";
+            }
+            else {
+                document.getElementById('btn1').disabled = "";
+                document.getElementById('btn2').disabled = "";
+            }
+        }
+    }
+
+    function sendValue1() {
+        document.getElementById('btn1').disabled = "disabled";
+        document.getElementById('btn2').disabled = "disabled";
+        liveSend(1);
+    }   
+    
+    function sendValue2() {
+        document.getElementById('btn1').disabled = "disabled";
+        document.getElementById('btn2').disabled = "disabled";
+        liveSend(2);
+    }
+</script>
+
+{{ endblock }}

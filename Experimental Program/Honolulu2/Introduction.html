@@ -1,0 +1,628 @@
+{{ block title }}
+
+<title>
+    Introduction
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'intro.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">{{ player.round_number }}</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<div class="fixed-calc strongsection">
+    <details>
+        <summary>
+            Open calculator
+        </summary>
+            <br>
+        <a href="https://github.com/guuibayer/simple-calculator" target="_blank"><i class="fa fa-github"></i></a>
+        <input type="button" id="calc-clear" class="btn-calc-other" value="C">
+        <input type="text" id="calc-display">
+            <br>
+        <input type="button" class="btn-calc-number" value="7" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="8" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="9" onclick="get(this.value);">
+        <input type="button" class="btn-calc-operator" value="+" onclick="get(this.value);">
+            <br>
+        <input type="button" class="btn-calc-number" value="4" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="5" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="6" onclick="get(this.value);">
+        <input type="button" class="btn-calc-operator" value="*" onclick="get(this.value);">
+            <br>
+        <input type="button" class="btn-calc-number" value="1" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="2" onclick="get(this.value);">
+        <input type="button" class="btn-calc-number" value="3" onclick="get(this.value);">
+        <input type="button" class="btn-calc-operator" value="-" onclick="get(this.value);">
+            <br>
+        <input type="button" class="btn-calc-number" value="0" onclick="get(this.value);">
+        <input type="button" class="btn-calc-operator" value="." onclick="get(this.value);">
+        <input type="button" class="btn-calc-operator" value="/" onclick="get(this.value);">			
+        <input type="button" class="btn-calc-other" value="=" onclick="calculates();">
+    </details>
+</div>
+
+<h2>
+    EXPERIMENT INSTRUCTIONS (Part 2H)
+</h2>
+
+<h3>
+    Introduction
+</h3>
+
+<div class="section">
+    {{ if subsession.is_dutch_first == 0 }}
+    <p class="newsection">
+        In this part you are going to participate in a sequence of independent auction periods in which you will be buying a fictitious good. At the beginning of each auction, you will be assigned to a market with <strong>{{ num_other }}</strong> other participant(s). You will not be told which of the other participants are in your market. <em>What happens in your market has no effect on the participants in other markets and vice versa.</em>
+    </p>
+    <p>
+        In each auction period you will be able to place bids in an auction to purchase a single unit of a good.
+    </p>
+    {{ else }}
+    <p class="newsection">
+        In this part of the experiment, you are going to participate in another sequence of independent auction periods in which you will be buying a fictitious good. Your earnings from the purchase will depend on your value, the price you pay, and the auction duration, just like in the previous part. However, the auction organization will be different.
+    </p>
+    {{ endif }}
+</div>
+
+<h3>
+    Values, Auction Duration and Earnings
+</h3>
+
+<div class="section">
+{{ if subsession.is_dutch_first == 1 }}
+<details>
+    <summary>Same as Part 2D (Click to view details)</summary>
+{{ endif }}
+    <p class="newsection">
+        <b>Values and Earnings</b> During each market period you are free to purchase a unit of a good in an auction. You will be assigned a number which describes the value of the good for you. These values may differ among bidders and market periods. Each bidder will receive a value between <strong>{{ C.PRICE_MIN }}</strong> and <strong>{{ C.PRICE_MAX }}</strong>, with each number being equally likely. <em>You are not to reveal your value to anyone. It is your own private information.</em> 
+    </p>
+    <p>
+        Your earnings from the purchase, which are yours to keep, will depend on the difference between your value for the good and the price you pay, and on how long the auction lasts.
+    </p>
+    <p>
+        <em>Your raw (unadjusted) earnings or loss from the purchase is equal to the difference between your value and the purchase price:</em> That is: 
+    </p>
+    <p class="formula">
+        YOUR UNADJUSTED EARNINGS = YOUR VALUE - PURCHASE PRICE.
+    </p>
+    <p>
+        <b>Example 1</b> (All values are hypothetical). If you buy a good for {{ ex1_bid }} points and your value is {{ ex1_val }}, then your unadjusted earnings are:
+    </p>
+    <p class="formula">
+        UNADJUSTED EARNINGS = {{ ex1_val }} - {{ ex1_bid }} = {{ ex1_uadj }} points.
+    </p>
+    <p>
+        <b>Example 2</b> If you buy the good for {{ ex2_bid }} points and your value is {{ ex2_val }}, then your unadjusted earnings are:
+    </p>
+    <p class="formula">
+        UNADJUSTED EARNINGS = {{ ex2_val }} - {{ ex2_bid }} = {{ ex2_uadj }} points.
+    </p>
+    <p class="formula">
+        ARE THERE ANY QUESTIONS?
+    </p>
+    <p class="newsection">
+        <b>Auction Duration and Earnings</b> <em>Your earnings will further decrease in proportion to how long the auction lasts.</em> The auction duration will be measured by the virtual clock, which will tick every <strong>{{ tick }}</strong> seconds while the auction is open. Your unadjusted earnings, if positive, will shrink by <strong>{{ pct_b }}</strong> percent with every tick of the virtual clock; your loss, if negative, will increase by <strong>{{ pct_b }}</strong> percent with every tick of the virtual clock. That is, your time-adjusted earnings will be equal to 
+    </p>
+    <p class="formula">
+        YOUR EARNINGS = (YOUR VALUE - PURCHASE PRICE) * (TIME-ADJUSTMENT FACTOR),
+    </p>
+    <p class="newsection">
+        where the time-adjustment factor decreases with every tick of the virtual clock for positive earnings, and increases with every tick of the virtual clock for negative earnings. The table below illustrates how your earnings will be adjusted depending on the auction duration:
+    </p>
+    <table>
+        <tr>
+            <th style="width: 33%;">Elapsed time <br/>(in ticks of the virtual clock)</th>
+            <th style="width: 33%;">Time-adjustment factor for positive earnings</th>
+            <th style="width: 33%;">Time-adjustment factor for negative earnings</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>{{ pos_discount_1 }}</td>
+            <td>{{ neg_discount_1 }}</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>{{ pos_discount_2 }}</td>
+            <td>{{ neg_discount_2 }}</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>{{ pos_discount_5 }}</td>
+            <td>{{ neg_discount_5 }}</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>{{ pos_discount_10 }}</td>
+            <td>{{ neg_discount_10 }}</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>{{ pos_discount_20 }}</td>
+            <td>{{ neg_discount_20 }}</td>
+        </tr>
+        <tr>
+            <td>50</td>
+            <td>{{ pos_discount_50 }}</td>
+            <td>{{ neg_discount_50 }}</td>
+        </tr>
+    </table>
+    <p>
+        <b>Example 1 continued</b> (All values are hypothetical). Suppose that your value for a good is {{ ex1_val }}, and you buy the good for {{ ex1_bid }} Suppose the time-adjustment factor is as given above. If the auction ends after {{ tick13 }} ticks of the virtual clock, then your positive earnings will shrink to {{ ex1_pct_13 }} percent, and your time-adjusted earnings will be:
+    </p>
+    <p class="formula">
+        TIME-ADJUSTED EARNINGS = ({{ ex1_val }} - {{ ex1_bid }}) * {{ ex1_discount_13 }} = {{ ex1_adj_13 }} points.
+    </p>
+    <p>
+        If, on the other hand, the auction ends after {{ tick69 }} ticks, your earnings will shrink to {{ ex1_pct_69 }} percent by the end of the auction, and your time-adjusted earnings will be:
+    </p>
+    <p class="formula">
+        TIME-ADJUSTED EARNINGS = ({{ ex1_val }} - {{ ex1_bid }}) * {{ ex1_discount_69 }} = {{ ex1_adj_69 }} points.
+    </p>
+    <p>
+        <b>Example 2 continued</b> Suppose, as in Example 2 above, that your value is {{ ex2_val }}, you buy the good for {{ ex2_bid }}, and the time-adjustment factor is as given. If the auction ends after {{ tick13 }} ticks of the virtual clock, then your loss from the purchase will grow in magnitude by {{ ex2_pct_13 }} percent, and you adjusted earnings (loss) will be:
+    </p>
+    <p class="formula">
+        TIME-ADJUSTED EARNINGS = ({{ ex2_val }} - {{ ex2_bid }}) * {{ ex2_discount_13 }} = {{ ex2_adj_13 }} points.
+    </p>
+    <p>
+        If, on the other hand, your value and the purchase price are the same as above, but the auction ends after {{ tick69 }} ticks, then your loss from the purchase will increase by {{ ex2_pct_69 }} percent. Your time-adjusted negative earnings will be:
+    </p>
+    <p class="formula">
+        TIME-ADJUSTED EARNINGS = ({{ ex2_val }} - {{ ex2_bid }}) * {{ ex2_discount_69 }} = {{ ex2_adj_69 }} points.
+    </p>
+    <p>
+        If you do not buy the good in a given period, your earnings will be zero in this period irrespective of how long the auction lasts. 
+    </p>
+    <p>
+        At each point of time during the auction, your computer screen will display your value of the good, the current price at which you may buy, the time adjustment factor, and your unadjusted and time-adjusted payoffs (earnings or losses) if you were to buy the good at the current price and time.
+    </p>
+    <img src="{{ static '01_Dutch.png' }}">
+    <p class="formula">
+        ARE THERE ANY QUESTIONS?
+    </p>
+{{ if subsession.is_dutch_first == 0 }}
+</details>
+{{ endif }}
+</div>
+
+<h3>
+    Summary of Values, Duration and Earnings
+</h3>
+
+<div class="section strongsection">
+    <p class="newsection">1. You will participate in an auction to buy a fictitious good. If you buy the good, your earnings from the purchase will depend on the difference between the value of the good and the price you pay, and on how long the auction lasts.</p>
+    <p class="newsection">2. If you buy the good at a price above your value, your earnings will be negative (you will lose money).</p>
+    <p class="newsection">3. If you buy the good at a price below your value, your earnings will be positive (you will make money).</p>
+    <p class="newsection">4. The longer the auction takes, the lower will be your earnings from the purchase, other things being equal.</p>
+    <p class="newsection">5. If you do not buy, your earnings will be zero.</p>
+</div>
+
+<h3>
+    Test for Understanding 1
+</h3>
+
+<div class="section strongsection">
+    <p class="newsection">
+        This is a test for understanding about the values, auction duration and earnings. <strong>Please answer all questions carefully.</strong> You will not be able to start the auction until you answer all questions correctly.
+    </p>
+</div>
+
+<div class="section strongsection" id="q11">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q11"><b>Question 1.1</b> Suppose your value for the good is 41, and the auction ends after several ticks of the virtual clock at the price of 20. The time-adjustment factor is 0.85 for positive earnings, and 1.15 for negative earnings. If you buy the good at this price and time, what is your earning (rounded to the closest integer)?</label>
+        <div class="controls">
+            <div id="id_q11" required>
+                <input type="text" class="form-control" id="id_q11-text" placeholder="Round your answer to the closest integer">
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol11"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check11" onclick="checkAnswer11()">Check Answer</button>
+</div>
+<div class="section strongsection" id="q12">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q12"><b>Question 1.2</b> Suppose your value for the good is 31, and the auction ends after several ticks of the virtual clock at the price of 49. The time-adjustment factor is 0.6 for positive earnings, and 1.4 for negative earnings. If you buy the good at this price and time, what is your earning (rounded to the closest integer)?</label>
+        <div class="controls">
+            <div id="id_q12" required>
+                <input type="text" class="form-control" id="id_q12-text" placeholder="Round your answer to the closest integer">
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol12"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check12" onclick="checkAnswer12()">Check Answer</button>
+</div>
+
+<h3>
+    Auction Organization
+</h3>
+
+<div class="section">
+    <p class="newsection">
+        The auction is organized as follows. In each auction you and <strong>{{ num_other }}</strong> other participant(s) will compete to purchase a fictitious good.
+    </p>
+    <p>
+        <b>Price is going down</b> The price of the good will start at some value between <strong>{{ C.PRICE_MIN }}</strong> and <strong>{{ C.PRICE_MAX }}</strong> points, set by the experimenter, and will go down by <strong>1</strong> point with every tick of the virtual clock. Any of the bidders can stop the auction and provisionally purchase the good at the price displayed on the screen by clicking the <strong class="s_bid">Bid</strong> button. The first person to click the <strong class="s_bid">Bid</strong> button is provisionally assigned the good at the given price and time. The provisional buyer's screen will look like this: 
+    </p>
+    <img src="{{ static '02_Contest_DutchWinner.png' }}">
+    <p>
+        <b>Another chance to bid</b> When a bidder bids and becomes a provisional buyer, other bidders have <strong>{{ C.CONTEST_TIME }}</strong> seconds to challenge the provisional buyer by clicking the <strong class="s_bid">Bid</strong> button. The virtual clock will stop, and bidder payoffs will not change, during this time. Their screens will look like this:
+    </p>
+    <img src="{{ static '03_Contest_DutchNonWinner.png' }}">
+    <p>
+        If a bidder decides not to bid at this stage, they may leave the auction by either clicking <strong class="s_leave">Leave</strong> button, or by taking no action. This bidder then becomes inactive and cannot bid any more.
+    </p>
+    <p>
+        If no bidder challenges the provisionally assigned buyer by clicking the <strong class="s_bid">Bid</strong> button after <strong>{{ C.CONTEST_TIME }}</strong> seconds, then the auction ends. The provisional buyer buys the good at the price and time of their bid. All other bidders earn 0 for that auction.
+    </p>
+    <p>
+        <b>Price is going up</b> If one or more other bidders challenge the provisional buyer by clicking the <strong class="s_bid">Bid</strong> button, then the auction and the virtual clock will resume, and the price will go up from the previously bid price by <strong>1</strong> point with every tick of the virtual clock. Only the provisional buyer and those bidders who challenged this buyer by clicking <strong class="s_bid">Bid</strong> will be active in the auction at this stage. (The bidders who left the auction will be inactive and will view the auction without taking any action.) An active bidder screen will look like this:
+    </p>
+    <img src="{{ static '05_English.png' }}">
+    <p>
+        Any active bidder can then leave the auction at any time by clicking the <strong class="s_leave">Leave</strong> button. The auction will continue, with the price and time increasing, as long as there are two or more active bidders in the auction. The auction ends when the next to the last active bidder clicks <strong class="s_leave">Leave</strong> button. The last bidder to stay active in the auction buys the good at the price and time when the next to last bidder left. All other bidders earn 0 for that auction. If two last active bidders drop out at the same time and price, then the object will be allocated randomly to one of these bidders at the price and time when they left.
+    </p>
+    <p>
+        After the good is sold, the auction closes for this period. Your results screen will display whether you bought the good or not; your value for the good, sale price, and your unadjusted and time-adjusted payoffs. 
+    </p>
+    {{ if subsession.is_dutch_first == 0 }}
+    <img src="{{ static '07_Result_Winner.png' }}">
+    <p>
+        If you do not buy, your results screen will report your actual payoffs as zero, and will also display your hypothetical payoff if you were to buy the good at the price and time when it was sold:
+    </p>
+    <img src="{{ static '08_Result_NonWinner.png' }}">
+    {{ endif }}
+    <p>
+        Your time-adjusted earnings from all previous auctions will be displayed in the history box at the bottom of each auction's results screen.
+    </p>
+    <p class="formula">
+        ARE THERE ANY QUESTIONS?
+    </p>
+</div>
+
+<h3>
+    Summary of Auction Organization
+</h3>
+
+<div class="section strongsection">
+    <p class="newsection">1. When the auction opens, the price will start to go down. The first person to click the <strong class="s_bid">Bid</strong> button will be provisionally assigned the good at the time and price of their bid. After that, all other bidders will be given another chance to bid.</p>
+    <p class="newsection">2. Only the bidders who click <strong class="s_bid">Bid</strong>, either when the price is going down, or at "Another Chance to Bid" stage, will have a chance to buy. Bidders who do not bid will not be able to buy the good in this auction and will earn zero.</p>
+    <p class="newsection">3. If more than one bidder clicks the <strong class="s_bid">Bid</strong> button, the price will start going up, and all bidders who are active (i.e., they pressed <strong class="s_bid">Bid</strong> earlier) will be considered willing to buy at the current price. You have to press the <strong class="s_leave">Leave</strong> button to exit bidding. The last bidder to stay active in the auction will buy the good at the price and time when the next to last bidder left.</p>
+    <p class="newsection">4. If the price is above your value, and you bid (if the price is going down or at "Another Chance to Bid" stage) or you do not leave the auction (if the price is going up), you may end up buying the good at a price above your value, and lose money.</p>
+    <p class="newsection">5. If the price is below your value and you do not bid (at "Another Chance to Bid" stage), or you leave the auction (when the price is going up), you may forgo a chance to buy at a price below your value and earn a positive profit.</p>
+</div>
+
+<h3>
+    Test for Understanding 2H
+</h3>
+
+<div class="section strongsection">
+    <p class="newsection">
+        This is another test for understanding about the auction organization. <strong>Please answer all questions carefully.</strong> You will not be able to start the auction until you answer all questions correctly.
+    </p>
+</div>
+
+<div class="section strongsection" id="q21">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q21"><b>Question 2.1</b> Suppose the price is going down, and you are the first person to bid at the price of 24. Suppose your value for the good is 17. Check which statement is correct:</label>
+        <div class="controls">
+            <div id="id_q21" required>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q21-0" name="q21" required value="1"> <label for="id_q21-0">Even though the price of 24 is above your value of value 17, I will not lose money if I bid at this price because another person may also bid and buy the good.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q21-1" name="q21" required value="2"> <label for="id_q21-1">Because the price of 24 is above my value of 17, I may lose money if I bid at this price.</label></div>
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol21"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check21" onclick="checkAnswer21()">Check Answer</button>
+</div>
+<div class="section strongsection" id="q22">   
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q22"><b>Question 2.2</b> Suppose the price was going down, but then it stopped at 35, and you are given "Another Chance to Bid". Suppose your value for the good is 41. Check which statement is correct:</label>
+        <div class="controls">
+            <div id="id_q22" required>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q22-0" name="q22" required value="1"> <label for="id_q22-0">If I click <strong class="s_bid">Bid</strong>, I will continue bidding and may have a chance to buy and make a positive earning. If I do not click <strong class="s_bid">Bid</strong> or click the <strong class="s_leave">Leave</strong> button, I will forgo a chance to buy and earn money.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q22-1" name="q22" required value="2"> <label for="id_q22-1">I should not bid. Instead, I should leave the auction because the price is too high.</label></div>
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol22"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check22" onclick="checkAnswer22()">Check Answer</button>
+</div>
+<div class="section strongsection" id="q23">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q23"><b>Question 2.3</b> Suppose again that the price was going down, but then it stopped at 18, and you are given "Another Chance to Bid". Suppose now your value for the good is 11. Check which statement is correct:</label>
+        <div class="controls">
+            <div id="id_q23" required>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q23-0" name="q23" required value="1"> <label for="id_q23-0">If I click <strong class="s_bid">Bid</strong> I will continue bidding and may have a chance to buy and make a positive earning. If I do not click <strong class="s_bid">Bid</strong> or click the <strong class="s_leave">Leave</strong> button, I will forgo a chance to buy and earn money.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q23-1" name="q23" required value="2"> <label for="id_q23-1">Because the price is above my value, I should not bid if I want to avoid losses. If I click <strong class="s_bid">Bid</strong>, I may buy at the current price or higher, and I will lose money if I buy.</label></div>
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol23"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check23" onclick="checkAnswer23()">Check Answer</button>
+</div>
+<div class="section strongsection" id="q24">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q24"><b>Question 2.4</b> Suppose the price of the good is going up and is currently at 14. Suppose you are an active bidder, and your value of the good is 28. Check which statement is correct:</label>
+        <div class="controls">
+            <div id="id_q24" required>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q24-0" name="q24" required value="1"> <label for="id_q24-0">I have to click <strong class="s_bid">Bid</strong> with every price increase to remain active in the auction and have a chance to buy the good.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q24-1" name="q24" required value="2"> <label for="id_q24-1">If I click the <strong class="s_leave">Leave</strong> button at this price, I will forgo my chance to buy at a price below my value and earn a positive payoff.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q24-2" name="q24" required value="3"> <label for="id_q24-2">Even if I click the <strong class="s_leave">Leave</strong> button at this price, I will still have a chance to bid at a later point and buy in this auction.</label></div>
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol24"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check24" onclick="checkAnswer24()">Check Answer</button>
+</div>
+<div class="section strongsection" id="q25">
+    <div class="mb-3 _formfield">
+        <label class="col-form-label" for="id_q25"><b>Question 2.5</b> Suppose the price of the good is going up and is currently at 14. Suppose you are an active bidder, and your value of the good is 9. Check which statement is correct:</label>
+        <div class="controls">
+            <div id="id_q25" required>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q25-0" name="q25" required value="1"> <label for="id_q25-0">If I do not leave, I will continue bidding, and may buy the good at a price below my value and earn money. If I click the <strong class="s_leave">Leave</strong> button at this price, I will forgo my chance to buy at a price below value and earn a positive payoff.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="id_q25-1" name="q25" required value="2"> <label for="id_q25-1">Because the price of 14 is above my value of 9, and the price is going up, I will not be able to buy and make money in this auction. If I do not click <strong class="s_leave">Leave</strong>, I will continue bidding, I may buy the good at a price below my value and lose money.</label></div>
+            </div>
+        </div>
+    </div>
+    <p class="newsection" id="sol25"></p>
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_check25" onclick="checkAnswer25()">Check Answer</button>
+</div>
+
+<h3>
+    Matching
+</h3>
+
+<div class="section">
+    {{ if subsession.is_dutch_first == 0 }}
+    <p class="newsection">
+        You will be randomly re-matched with new participants in every auction. You will not be told which of the other participants you are matched with in any given auction, and they will not be told that you are matched with them. What happens in your auction has no effect on what happens in any other auction, and vice versa.
+    </p>
+    <p>
+        This will continue for a number of periods. Your total earnings in this part of the session are given by the sum of your period earnings. Your cumulative earnings in all parts will be displayed on your computer screen at all times during the auction.
+    </p>
+    {{ else }}
+    <p class="newsection">
+        You will be randomly re-matched with new participants in every auction. 
+    </p>
+    <p>
+        This will continue for a number of periods. Your total earnings in this part of the session are given by the sum of your period earnings. 
+    </p>
+    {{ endif }}
+    <p>
+        The first <strong>{{ session.config.num_test_rounds }}</strong> period(s) will be practice. You will receive no earnings for these periods. If you have a question, please raise your hand and I will answer your question in private.
+    </p>
+    <p class="formula">
+        ARE THERE ANY QUESTIONS?
+    </p>
+</div>
+
+<div class="next">
+    <button class="otree-btn-next btn btn-primary" type="button" id="btn_next" onclick="checkAllCorrect()">Next</button>
+</div>
+
+<script>
+    document.getElementById("calc-clear").addEventListener("click", function() {
+	    document.getElementById("calc-display").value = "";
+    });
+    
+    function get(value) {
+	    document.getElementById("calc-display").value += value; 
+    }
+    
+    function calculates() {
+	    var result = 0;
+	    result = document.getElementById("calc-display").value;
+	    document.getElementById("calc-display").value = "";
+	    document.getElementById("calc-display").value = eval(result);
+    }
+
+    function checkAnswer11() {
+        var val = $("#id_q11-text").val();
+        if (val == "") {
+            alert("Please give your answer first.");
+        }
+        else if (val == 18) {
+            $("#id_q11-text").attr("disabled", true);
+            $("#btn_check11").attr("disabled", true);
+            document.getElementById("btn_check11").style.backgroundColor = "green";
+            document.getElementById("btn_check11").style.borderColor = "green";
+            document.getElementById("btn_check11").innerText = "\u2705 Correct";
+            document.getElementById("sol11").style.color = "green";
+            document.getElementById("sol11").innerHTML = "Feedback: Correct! Your earning is the difference between your value and the price, (41 - 20) > 0, multiplied by the time-adjustment factor of 0.85 since the difference is positive. It is equal to (41 - 20) * 0.85 = 18 points.";
+        }
+        else {
+            document.getElementById("btn_check11").style.backgroundColor = "red";
+            document.getElementById("btn_check11").style.borderColor = "red";
+            document.getElementById("btn_check11").innerText = "Try Again";
+            document.getElementById("sol11").style.color = "red";
+            document.getElementById("sol11").innerHTML = "Feedback: Incorrect. Your earning should be the difference between your value and the price, multiplied by the time-adjustment factor that varies depending on whether the difference is positive or negative.";
+        }
+    }
+
+    function checkAnswer12() {
+        var val = $("#id_q12-text").val();
+        if (val == "") {
+            alert("Please give your answer first.");
+        }
+        else if (val == -25) {
+            $("#id_q12-text").attr("disabled", true);
+            $("#btn_check12").attr("disabled", true);
+            document.getElementById("btn_check12").style.backgroundColor = "green";
+            document.getElementById("btn_check12").style.borderColor = "green";
+            document.getElementById("btn_check12").innerText = "\u2705 Correct";
+            document.getElementById("sol12").style.color = "green";
+            document.getElementById("sol12").innerHTML = "Feedback: Correct! Your earning is the difference between your value and the price, (21 - 49) < 0, multiplied by the time-adjustment factor of 1.4 since the difference is negative. It is equal to (21 - 49) * 1.4 = -25 points.";
+        }
+        else {
+            document.getElementById("btn_check12").style.backgroundColor = "red";
+            document.getElementById("btn_check12").style.borderColor = "red";
+            document.getElementById("btn_check12").innerText = "Try Again";
+            document.getElementById("sol12").style.color = "red";
+            document.getElementById("sol12").innerHTML = "Feedback: Incorrect. Your earning should be the difference between your value and the price, multiplied by the time-adjustment factor that varies depending on whether the difference is positive or negative.";
+        }
+    }    
+
+    function checkAnswer21() {
+        var val = $("input[name=q21]:checked").val()
+        if (val == null) {
+            alert("Please give your answer first.")
+        }
+        else if (val == 2) {
+            $("input[name=q21]").attr("disabled", true)
+            $("#btn_check21").attr("disabled", true)
+            document.getElementById("btn_check21").style.backgroundColor = "green";
+            document.getElementById("btn_check21").style.borderColor = "green";
+            document.getElementById("btn_check21").innerText = "\u2705 Correct";
+            document.getElementById("sol21").style.color = "green";
+            document.getElementById("sol21").innerHTML = "Feedback: Correct! If you bid at a price above your value, you may end up buying the good at the current price or higher, and lose money.";
+        }    
+        else {
+            document.getElementById("btn_check21").style.backgroundColor = "red";
+            document.getElementById("btn_check21").style.borderColor = "red";
+            document.getElementById("btn_check21").innerText = "Try Again";
+            document.getElementById("sol21").style.color = "red";
+            document.getElementById("sol21").innerHTML = "Feedback: Incorrect. If you bid at a price above your value, you may end up buying the good at the current price or higher, and lose money.";
+        }
+    }
+
+    function checkAnswer22() {
+        var val = $("input[name=q22]:checked").val()
+        if (val == null) {
+            alert("Please give your answer first.")
+        }
+        else if (val == 1) {
+            $("input[name=q22]").attr("disabled", true)
+            $("#btn_check22").attr("disabled", true)
+            document.getElementById("btn_check22").style.backgroundColor = "green";
+            document.getElementById("btn_check22").style.borderColor = "green";
+            document.getElementById("btn_check22").innerText = "\u2705 Correct";
+            document.getElementById("sol22").style.color = "green";
+            document.getElementById("sol22").innerHTML = "Feedback: Correct! Since the current price is below your value, if you bid, you will continue bidding and may buy at a price below your value and earn a positive payoff. If you do not bid, you will forgo a chance to buy at a price below value and earn a positive payoff.";
+        }
+        else {
+            document.getElementById("btn_check22").style.backgroundColor = "red";
+            document.getElementById("btn_check22").style.borderColor = "red";
+            document.getElementById("btn_check22").innerText = "Try Again";
+            document.getElementById("sol22").style.color = "red";
+            document.getElementById("sol22").innerHTML = "Feedback: Incorrect. If you do not bid or leave the auction, you will not be able to continue bidding. Since the current price is 35, which is below your value of 41, if you do not bid, you will forgo your chance to buy at a price below value and earn a positive payoff.";
+        }
+    }
+
+    function checkAnswer23() {
+        var val = $("input[name=q23]:checked").val()
+        if (val == null) {
+            alert("Please give your answer first.")
+        }
+        else if (val == 2) {
+            $("input[name=q23]").attr("disabled", true)
+            $("#btn_check23").attr("disabled", true)
+            document.getElementById("btn_check23").style.backgroundColor = "green";
+            document.getElementById("btn_check23").style.borderColor = "green";
+            document.getElementById("btn_check23").innerText = "\u2705 Correct";
+            document.getElementById("sol23").style.color = "green";
+            document.getElementById("sol23").innerHTML = "Feedback: Correct! Since the current price of 18 is above your value of 11, if you bid, you may buy at this or a higher price  and lose money.";
+        }
+        else {
+            document.getElementById("btn_check23").style.backgroundColor = "red";
+            document.getElementById("btn_check23").style.borderColor = "red";
+            document.getElementById("btn_check23").innerText = "Try Again";
+            document.getElementById("sol23").style.color = "red";
+            document.getElementById("sol23").innerHTML = "Feedback: Incorrect. If you bid at a price 18 which is above your value of 11, you may end up buying at the current price or higher, and lose money. Since the price may only go up from this point onwards, you will not have a chance to buy at a price below value and make a positive earning.";
+        }
+    }
+
+    function checkAnswer24() {
+        var val = $("input[name=q24]:checked").val()
+        if (val == null) {
+            alert("Please give your answer first.")
+        }
+        else if (val == 2) {
+            $("input[name=q24]").attr("disabled", true)
+            $("#btn_check24").attr("disabled", true)
+            document.getElementById("btn_check24").style.backgroundColor = "green";
+            document.getElementById("btn_check24").style.borderColor = "green";
+            document.getElementById("btn_check24").innerText = "\u2705 Correct";
+            document.getElementById("sol24").style.color = "green";
+            document.getElementById("sol24").innerHTML = "Feedback: Correct! If you leave the auction at a price below your value, you will forgo your chance to buy and earn a positive profit. Because the current price of 14 is below your value of 28, you could stay active to give yourself a chance to buy the good at a price below value and earn a positive earning.";
+        }
+        else if (val == 1) {
+            document.getElementById("btn_check24").style.backgroundColor = "red";
+            document.getElementById("btn_check24").style.borderColor = "red";
+            document.getElementById("btn_check24").innerText = "Try Again";
+            document.getElementById("sol24").style.color = "red";
+            document.getElementById("sol24").innerHTML = "Feedback: Incorrect. You are considered actively bidding until you click the <strong class=\"s_leave\">Leave</strong> button, and will buy the good at the price and time at which all other bidders leave. If all other bidders leave at this price of 14, you will buy at this price and earn a positive payoff since your value of 28 is above the price.";
+        }
+        else {
+            document.getElementById("btn_check24").style.backgroundColor = "red";
+            document.getElementById("btn_check24").style.borderColor = "red";
+            document.getElementById("btn_check24").innerText = "Try Again";
+            document.getElementById("sol24").style.color = "red";
+            document.getElementById("sol24").innerHTML = "Feedback: Incorrect. If you click the <strong class=\"s_leave\">Leave</strong> button, you will become inactive and will not be able to buy the good in this auction. Since the current price of 14 is below your value of 28, if you click <strong class=\"s_leave\">Leave</strong> at this price, you will forgo your chance to buy and earn a positive profit.";
+        }
+    }
+
+    function checkAnswer25() {
+        var val = $("input[name=q25]:checked").val()
+        if (val == null) {
+            alert("Please give your answer first.")
+        }
+        else if (val == 2) {
+            $("input[name=q25]").attr("disabled", true)
+            $("#btn_check25").attr("disabled", true)
+            document.getElementById("btn_check25").style.backgroundColor = "green";
+            document.getElementById("btn_check25").style.borderColor = "green";
+            document.getElementById("btn_check25").innerText = "\u2705 Correct";
+            document.getElementById("sol25").style.color = "green";
+            document.getElementById("sol25").innerHTML = "Feedback: Correct! Because the price of 14 is above your value of 9, and the price is going up, if you do not leave and remain an active bidder, you may buy a price above your value and lose money. if you click the <strong class=\"s_leave\">Leave</strong> button, you will become inactive and will protect yourself against a loss.";
+        }
+        else {
+            document.getElementById("btn_check25").style.backgroundColor = "red";
+            document.getElementById("btn_check25").style.borderColor = "red";
+            document.getElementById("btn_check25").innerText = "Try Again";
+            document.getElementById("sol25").style.color = "red";
+            document.getElementById("sol25").innerHTML = "Feedback: Incorrect. Because the price of 14 is above your value of 9, and the price is going up, if you do not leave and remain an active bidder, you may buy at a price above your value and lose money. if you click the <strong class=\"s_leave\">Leave</strong> button, you will become inactive and will protect yourself against a loss.";
+        }
+    }
+
+    function checkAllCorrect() {
+        var val11 = $("#id_q11-text").val();
+        var val12 = $("#id_q12-text").val();
+        var val21 = $("input[name=q21]:checked").val();
+        var val22 = $("input[name=q22]:checked").val();
+        var val23 = $("input[name=q23]:checked").val();
+        var val24 = $("input[name=q24]:checked").val();
+        var val25 = $("input[name=q25]:checked").val();
+        if (val11 == 18 && val12 == -25 && val21 == 2 && val22 == 1 && val23 == 2 && val24 == 2 && val25 == 2) {
+            document.getElementById("form").submit();
+        }
+        else {
+            alert("You are required to answer all understanding questions correctly before moving to next page. Please check again!");
+        }
+    }
+</script>
+ 
+{{ endblock }}

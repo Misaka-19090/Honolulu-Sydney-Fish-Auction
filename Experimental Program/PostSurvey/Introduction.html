@@ -1,0 +1,45 @@
+{{ block title }}
+
+<title>
+    Exit questionnaire
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'intro.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table style="border: 0; border-collapse: separate; border-spacing: 10px 0px; width: 100%; margin-bottom: 20px;">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">None</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    EXPERIMENT INSTRUCTIONS (Part 3)
+</h2>
+
+<div class="section">
+    <p class="newsection">
+        The main parts of the experiment are over. We will now ask you to complete a short exit questionnaire. After finishing the questionnaire, you will be paid in private.
+    </p>
+</div>
+
+<div class="next">
+    {{ next_button }}
+</div>   
+ 
+{{ endblock }}

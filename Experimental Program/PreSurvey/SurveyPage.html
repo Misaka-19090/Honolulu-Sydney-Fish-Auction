@@ -1,0 +1,61 @@
+{{ block title }}
+
+<title>
+    Survey
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'survey.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">None</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<iframe src="{{ player_url }}" width="100%" height="1200px"></iframe>
+
+<div class="pwd">
+    <p style="font-weight: bold;">The password will be provided to you at the completion of Part 1.</p>
+    <label for="pwd">Please enter it here: </label>
+    <input type="password" id="pwd">
+    <p id="warning_text" style="color:red;"></p>
+</div>
+
+<div class="next">
+    <button class="otree-btn-next btn btn-primary" type="button" onclick="verifyPassword()">
+        Next
+    </button>
+</div>
+
+<script>
+    function verifyPassword() {
+        liveSend(document.getElementById("pwd").value);
+    }
+
+    function liveRecv(data) {
+        if (data.flag == true) {
+            document.getElementById("warning_text").innerText = "";
+            document.getElementById("form").submit();
+        }
+        else {
+            document.getElementById("warning_text").innerText = "Wrong password!";
+        }
+    }
+</script>
+{{ endblock }}

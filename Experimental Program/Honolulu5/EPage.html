@@ -1,0 +1,172 @@
+{{ block title }}
+
+<title>
+    Auctioning
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'auction.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table class="playerinfo">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">{{ player.round_number }}</span> <span style="color: blue;">
+                {{ if player.round_number > session.config.num_test_rounds }}
+                (formal)
+                {{ else }}
+                (practice)
+                {{ endif }}
+            </span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    AUCTION PERIOD {{ player.round_number }} <span style="color: blue;">IS OPEN</span>
+    <br/><span style="color: blue;">PRICE IS GOING UP</span>
+</h2>
+
+<p id="status_text" style="text-align: center; font-size: 16px;"></p>
+
+<table class="boardtop">
+    <tr>
+        <td style="width: 50%;">Number of active participants</td>
+        <th id="num_active" style="width: 20%; font-size: 24px;"></th>
+        <td id="leavenote_text" style="width: 30%; color: red;"></td>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 25%;">Your value of the good</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Current price</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Your unadjusted earnings if you buy now</td>
+    </tr>
+    <tr>
+        <th style="font-size: 24px;">{{ player.item_value }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x2212;</span></td>
+        <th style="font-size: 24px; color: blue;"><span id="current_price"></span><span class="blinking">&#9650;</span></th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th id="unadjusted_payoff"></th>
+    </tr>
+</table>
+
+<table class="boardmiddle">
+    <tr>
+        <td style="width: 50%;">Elapsed virtual time</td>
+        <th id="time_elapsed" style="width: 50%;"></th>
+    </tr>
+</table>
+
+<table class="boardbottom">
+    <tr>
+        <td style="width: 25%;">Your unadjusted earnings if you buy now</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Time-adjustment factor</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <th style="width: 25%;" id="change_if_inactive">YOUR TIME-ADJUSTED EARNINGS IF YOU BUY NOW</th>
+    </tr>
+    <tr>
+        <th id="unadjusted_payoff2"></th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x00D7;</span></td>
+        <th id="discount_factor"></th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th id="adjusted_payoff" style="font-size: 24px; color: blue;"></th>
+    </tr>
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+    <p id="warning_text" style="text-align: center; font-size: 16px;"></p>
+    <button type="button" class="btn_leave" id="btn" onclick="sendValue()" disabled>Leave</button>
+</div>
+
+<script>
+
+    var refresh = setInterval(function(){refreshRequest()}, js_vars.refresh_freq);
+    var num_original_active = parseInt("{{ group.num_active }}");
+    var num_leave_auction = 0;
+
+    function liveRecv(data) {
+        
+        let {status, num_active, current_price, time_elapsed, unadjusted_payoff, discount_factor, adjusted_payoff} = data;
+
+        if (num_active <= 1 || current_price >= js_vars.max_price){
+            clearInterval(refresh);
+            document.getElementById("form").submit();
+        }
+        else {
+            if (status == true && num_active > 1) {
+                document.getElementById("btn").disabled = "";
+            }
+            else {
+                document.getElementById("btn").disabled = "disabled";
+            }
+
+            document.getElementById("num_active").innerText = num_active;
+            document.getElementById("current_price").innerHTML = current_price + " points ";
+            document.getElementById("time_elapsed").innerText = time_elapsed + "";
+            document.getElementById("unadjusted_payoff").innerText = unadjusted_payoff + " points";
+            document.getElementById("unadjusted_payoff2").innerText = unadjusted_payoff + " points";
+            document.getElementById("discount_factor").innerText = discount_factor;
+            document.getElementById("adjusted_payoff").innerText = adjusted_payoff.toFixed(1) + " points";
+
+            if (status == true) {
+                document.getElementById("status_text").innerHTML = "You are an <strong class=\"s_active\">active</strong> bidder.";
+                document.getElementById("status_text").style.color = "black"
+                document.getElementById("adjusted_payoff").style.color = "blue";
+                document.getElementById("warning_text").innerHTML = "Press <strong class=\"s_leave\">Leave</strong> if you want to exit the auction.";
+                document.getElementById("warning_text").style.color = "black";
+
+                if (adjusted_payoff < 0) {
+                    document.getElementById("adjusted_payoff").style.color = "red";
+                    document.getElementById("warning_text").innerHTML = "Warning: Your current earnings are <strong>negative</strong>! Press <strong class=\"s_leave\">Leave</strong> if you want to exit the auction.";
+                    document.getElementById("warning_text").style.color = "red";
+                }  
+            }
+            else {
+                document.getElementById("adjusted_payoff").style.color = "blue";
+                document.getElementById("status_text").innerHTML = "You are an <strong class=\"s_active\">inactive</strong> bidder.";
+                document.getElementById("status_text").style.color = "black";
+                document.getElementById("change_if_inactive").innerHTML = "YOUR TIME-ADJUSTED EARNINGS IF YOU WERE TO BUY NOW";
+                document.getElementById("warning_text").innerText = "";
+                document.getElementById("warning_text").style.color = "";
+            }
+        }  
+        if (num_original_active - parseInt(num_active) != num_leave_auction){
+            num_leave_auction = num_original_active - parseInt(num_active);
+            leaveNotification();
+        }
+    }
+
+    function leaveNotification(){
+        document.getElementById("leavenote_text").innerText = "Some contestant has left the auction.";
+        $("#leavenote_text").fadeTo(500, 1);
+        $("#leavenote_text").fadeTo(1500, 0);
+    }
+
+    function refreshRequest(){
+        liveSend(false);
+    }
+
+    function sendValue() {
+        document.getElementById('btn').disabled = "disabled";
+        liveSend(true);
+    }
+</script>
+
+{{ endblock }}

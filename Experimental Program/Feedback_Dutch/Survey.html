@@ -1,0 +1,170 @@
+{{ block title }}
+
+<title>
+    Feedback
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'survey.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<table style="border: 0; border-collapse: separate; border-spacing: 10px 0px; width: 100%; margin-bottom: 20px;">
+    <tr>
+        <td style="width: 25%; text-align: left;">
+            Period: <span style="font-weight: bold;">None</span>
+        </td>
+        <th style="width: 50%; text-align: center;">
+            Cumulative payoff: {{ if player.participant.payoff < 0 }}
+            <span style="color: red;">{{ player.participant.payoff }} points</span>
+            {{ else }}
+            <span style="color: blue;">{{ player.participant.payoff }} points</span>
+            {{ endif }}
+        </th>
+        <td style="width: 25%; text-align: right;">
+            Participant Label: <span style="font-weight: bold;">{{ player.participant.label }}</span>
+        </td>
+    </tr>
+</table>
+
+<h2>
+    FEEDBACK ON THE AUCTION
+</h2>
+
+<div class="question">
+    <p>Please describe your experience in this part of experiment.</p>
+    <div class="subquestion">
+        <p>{{ form.auc0.label }}</p>
+        <table>
+            <tr>
+                <td><input class="form-check-input" type="radio" id="id_auc0-0" name="auc0" required value="1" onclick="sendAnswer(this.value)"></td>
+                <td>{{ form.auc0.0.label }}</td>
+            </tr>
+            <tr>
+                <td><input class="form-check-input" type="radio" id="id_auc0-1" name="auc0" required value="2" onclick="sendAnswer(this.value)"></td>
+                <td>{{ form.auc0.1.label }}</td>
+            </tr>
+            <tr>
+                <td><input class="form-check-input" type="radio" id="id_auc0-2" name="auc0" required value="3" onclick="sendAnswer(this.value)"></td>
+                <td>{{ form.auc0.2.label }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" name="auc0" id="auc0">
+</div>
+
+<div class="question" id="q1234" style="display:none">
+    <p>Rate how much you agree with the following statements on a scale from 'Completely Disagree' to 'Completely Agree':</p>
+    <table class="rating">
+        <tr>
+            <td style="width: 30%;">&nbsp;</td>
+            <td style="width: 10%;">Completely Disagree</td>
+            <td style="width: 10%;">Disagree</td>
+            <td style="width: 10%;">Somewhat Disagree</td>
+            <td style="width: 10%;">Neither Agree Nor Disagree</td>
+            <td style="width: 10%;">Somewhat Agree</td>
+            <td style="width: 10%;">Agree</td>
+            <td style="width: 10%;">Completely Agree</td>
+        </tr>
+        {{ for field in form }}
+            {{ if forloop.counter <= 4 }}
+                <tr>
+                    <td style="text-align: left;">{{ field.label }}</td>
+                    {{ for choice in field }}
+                        <td>{{ choice }}</td>
+                    {{ endfor }}
+                </tr>
+            {{ endif }}
+        {{ endfor }}
+    </table>
+</div>
+
+<div class="question" id="q56" style="display: none">
+    <p>Indicate how you felt under the following situation on a scale from 'Extremely Sad' to 'Extremely Happy':</p>
+    <table class="feeling">
+        <tr>
+            <td style="width: 30%;">&nbsp;</td>
+            <td style="width: 10%;">Extremely Sad</td>
+            <td style="width: 10%;">Sad</td>
+            <td style="width: 10%;">Somewhat Sad</td>
+            <td style="width: 10%;">Neither Happy Nor Sad</td>
+            <td style="width: 10%;">Somewhat Happy</td>
+            <td style="width: 10%;">Happy</td>
+            <td style="width: 10%;">Extremely Happy</td>
+        </tr>  
+        <tr id="q5">
+            <td style="text-align: left;">{{ form.auc5.label }}</td>
+            {{ for choice in form.auc5 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr id="q6">
+            <td style="text-align: left;">{{ form.auc6.label }}</td>
+            {{ for choice in form.auc6 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+    </table>
+    {{ formfield_errors 'auc0' }}
+</div>
+
+<div class="next">
+    {{ next_button }}
+</div>   
+
+<script>
+    function changeTable(s, flag) {
+        for (var i=0; i<7; i++) {
+            document.getElementById(s + "-" + String(i)).required = flag
+        }
+    }
+
+    function sendAnswer(flag) {
+        if (flag == "1") {
+            document.getElementById("id_auc3-0").parentElement.parentElement.style.display = ""
+            changeTable("id_auc3", true)
+            document.getElementById("id_auc4-0").parentElement.parentElement.style.display = "none"
+            changeTable("id_auc4", false)
+            document.getElementById("q5").style.display = ""
+            changeTable("id_auc5", true)
+            document.getElementById("q6").style.display = "none"
+            changeTable("id_auc6", false)
+            document.getElementById("auc0").value = 1
+        }
+        else if (flag == "2") {
+            document.getElementById("id_auc3-0").parentElement.parentElement.style.display = ""
+            changeTable("id_auc3", true)
+            document.getElementById("id_auc4-0").parentElement.parentElement.style.display = ""
+            changeTable("id_auc4", true)
+            document.getElementById("q5").style.display = ""
+            changeTable("id_auc5", true)
+            document.getElementById("q6").style.display = ""
+            changeTable("id_auc6", true)
+            document.getElementById("auc0").value = 2
+        }
+        else if (flag == "3") {
+            document.getElementById("id_auc3-0").parentElement.parentElement.style.display = "none"
+            changeTable("id_auc3", false)
+            document.getElementById("id_auc4-0").parentElement.parentElement.style.display = ""
+            changeTable("id_auc4", true)
+            document.getElementById("q5").style.display = "none"
+            changeTable("id_auc5", false)
+            document.getElementById("q6").style.display = ""
+            changeTable("id_auc6", true)
+            document.getElementById("auc0").value = 3
+        }
+        document.getElementById("q56").style.display = ""
+        document.getElementById("q1234").style.display = ""
+        $("table.rating tr:visible:odd").css("background", "rgba(135, 206, 250, 0.5)")
+        $("table.rating tr:visible:even").css("background", "white")
+        $("table.feeling tr:visible:odd").css("background", "rgba(135, 206, 250, 0.5)")
+        $("table.feeling tr:visible:even").css("background", "white")
+    }
+    
+</script>
+
+{{ endblock }}

@@ -1,0 +1,63 @@
+{{ block title }}
+
+<title>
+    Thank you
+</title>
+
+<link rel="stylesheet" type="text/css" href="{{ static 'prep_and_result.css' }}" />
+
+{{ endblock }}
+
+{{ block content }}
+
+<h2>
+    THANK YOU
+</h2>
+
+<p style="text-align: center; font-size: 16px;">
+    Thank you for participating in today's experiment. Your total payment is:
+</p>
+
+<table class="board">
+    <tr>
+        <td style="width: 25%;">Part 2D earnings</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Part 2H earnings</td>
+        <td style="width: 12.5%;">&nbsp;</td>
+        <td style="width: 25%;">Total auction earnings</td>
+    </tr>
+    <tr>
+        <th>{{ player.participant.dutch_payoff }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x002B;</span></td>
+        <th>{{ player.participant.honolulu_payoff }} points</th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x003D;</span></td>
+        <th>{{ total_point }} points</th>
+    </tr>
+</table>
+
+<table class="board">
+    <tr>
+        <td style="width: 17.5%;">Total auction earnings</td>
+        <td style="width: 10%;">&nbsp;</td>
+        <td style="width: 17.5%;">Exchange rate</td>
+        <td style="width: 10%;">&nbsp;</td>
+        <td style="width: 17.5%;">Participation fee</td>
+        <td style="width: 10%;">&nbsp;</td>
+        <th style="width: 17.5%;">Your total payment</th>
+    </tr>
+    <tr>
+        <th>{{ total_point }} points</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x00D7;</span></td>
+        <th>&#x0024;{{ session.config.real_world_currency_per_point }} per point</th>
+        <td><span style="font-size: 40px; font-weight: bold;">&#x002B;</span></td>
+        <th>${{ session.config.participation_fee }}</th>
+        <td><span style="font-size: 40px; color: black; font-weight: bold;">&#x003D;</span></td>
+        <th style="font-size: 24px;">${{ player.participant.payoff_plus_participation_fee() }}</th>
+    </tr>
+</table>
+
+<p style="text-align: center; font-size: 16px; font-weight: bold;">
+    Please wait to be called to be paid in private.
+</p>
+ 
+{{ endblock }}
