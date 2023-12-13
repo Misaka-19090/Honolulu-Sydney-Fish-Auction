@@ -18,96 +18,127 @@ Note that each question defaults to "No Answer" if no response is given within t
 **Survey Section 2:**
 
 In this section you will be asked to make a hypothetical choice between a 50/50 Chance of getting 300 dollars or nothing, and a sure payment. Please choose whether you would prefer the 50/50 chance, or the sure payment for each of the following questions. 
+
 1. What would you prefer: a draw with a 50 percent chance of receiving 300 Dollars, and the same 50 percent chance of receiving nothing, or the amount of 160 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 17
     1. Sure Payment -- Go to 2
+
 1. Would you prefer the 50/50 chance or the amount of 80 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 10
     1. Sure Payment -- Go to 3
+
 1. Would you prefer the 50/50 chance or the amount of 40 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 4
     1. Sure Payment -- Go to 7
+
 1. Would you prefer the 50/50 chance or the amount of 60 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 5
     1. Sure Payment -- Go to 6
+
 1. Would you prefer the 50/50 chance or the amount of 70 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 50 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 20 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 8
     1. Sure Payment -- Go to 9
+
 1. Would you prefer the 50/50 chance or the amount of 30 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 10 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 120 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 14
     1. Sure Payment -- Go to 11
+
 1. Would you prefer the 50/50 chance or the amount of 100 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 13
     1. Sure Payment -- Go to 12
+
 1. Would you prefer the 50/50 chance or the amount of 90 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 110 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 140 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 15
     1. Sure Payment -- Go to 16
+
 1. Would you prefer the 50/50 chance or the amount of 150 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 130 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 240 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 25
     1. Sure Payment -- Go to 18
+
 1. Would you prefer the 50/50 chance or the amount of 200 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 22
     1. Sure Payment -- Go to 19
+
 1. Would you prefer the 50/50 chance or the amount of 180 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 20
     1. Sure Payment -- Go to 21
+
 1. Would you prefer the 50/50 chance or the amount of 190 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 170 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 220 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 23
     1. Sure Payment -- Go to 24
+
 1. Would you prefer the 50/50 chance or the amount of 230 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 210 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 280 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 29
     1. Sure Payment -- Go to 26
+
 1. Would you prefer the 50/50 chance or the amount of 260 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 27
     1. Sure Payment -- Go to 28
+
 1. Would you prefer the 50/50 chance or the amount of 270 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 250 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 300 Dollars as a sure payment?
     1. 50/50 Chance -- Go to 31
     1. Sure Payment -- Go to 30
+
 1. Would you prefer the 50/50 chance or the amount of 290 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
+
 1. Would you prefer the 50/50 chance or the amount of 310 Dollars as a sure payment?
     1. 50/50 Chance -- Go to next section
     1. Sure Payment -- Go to next section
@@ -119,93 +150,123 @@ In this section you will be asked to make several hypothetical choices between r
 1. Please consider the following: would you rather receive 100 Dollars today or 154 Dollars in 12 months?
     1. Today -- Go to 17
     1. In 12 Months -- Go to 2
+
 1. Would you rather receive 100 Dollars today or 125 Dollars in 12 months?
     1. Today -- Go to 10
     1. In 12 Months -- Go to 3
+
 1. Would you rather receive 100 Dollars today or 112 Dollars in 12 months?
     1. Today -- Go to 7
     1. In 12 Months -- Go to 4
+
 1. Would you rather receive 100 Dollars today or 106 Dollars in 12 months?
     1. Today -- Go to 6
     1. In 12 Months -- Go to 5
+
 1. Would you rather receive 100 Dollars today or 103 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 109 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 119 Dollars in 12 months?
     1. Today -- Go to 8
     1. In 12 Months -- Go to 9
+
 1. Would you rather receive 100 Dollars today or 122 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 116 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 139 Dollars in 12 months?
     1. Today -- Go to 14
     1. In 12 Months -- Go to 11
+
 1. Would you rather receive 100 Dollars today or 132 Dollars in 12 months?
     1. Today -- Go to 13
     1. In 12 Months -- Go to 12
+
 1. Would you rather receive 100 Dollars today or 129 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 136 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 146 Dollars in 12 months?
     1. Today -- Go to 16
     1. In 12 Months -- Go to 15
+
 1. Would you rather receive 100 Dollars today or 143 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 150 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 185 Dollars in 12 months?
     1. Today -- Go to 18
     1. In 12 Months -- Go to 25
+
 1. Would you rather receive 100 Dollars today or 202 Dollars in 12 months?
     1. Today -- Go to 22
     1. In 12 Months -- Go to 19
+
 1. Would you rather receive 100 Dollars today or 193 Dollars in 12 months?
     1. Today -- Go to 20
     1. In 12 Months -- Go to 21
+
 1. Would you rather receive 100 Dollars today or 197 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 189 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 210 Dollars in 12 months?
     1. Today -- Go to 23
     1. In 12 Months -- Go to 24
+
 1. Would you rather receive 100 Dollars today or 215 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 206 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 169 Dollars in 12 months?
     1. Today -- Go to 29
     1. In 12 Months -- Go to 26
+
 1. Would you rather receive 100 Dollars today or 161 Dollars in 12 months?
     1. Today -- Go to 28
     1. In 12 Months -- Go to 27
+
 1. Would you rather receive 100 Dollars today or 158 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 165 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 177 Dollars in 12 months?
     1. Today -- Go to 31
     1. In 12 Months -- Go to 30
+
 1. Would you rather receive 100 Dollars today or 173 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
+
 1. Would you rather receive 100 Dollars today or 181 Dollars in 12 months?
     1. Today -- End of survey
     1. In 12 Months -- End of survey
@@ -373,8 +434,10 @@ Please rate each statement according to the given scales.
 
 1. What is your age? (Enter a Numerical Value)
     - Your answer:
+
 1. Please Indicate Your Major:
     - Your answer:
+
 1. What is your standing at the University?
     1. 1st Year Undergraduate
     1. 2nd Year Undergraduate
@@ -383,11 +446,13 @@ Please rate each statement according to the given scales.
     1. 5th Year And Beyond Undergraduate
     1. Graduate Student
     1. Professional Degree
+
 1. Which gender do you identify with?
     1. Female
     1. Male
     1. Non-binary
     1. Rather Not Say
+
 1. How many economics or business classes have you taken?
     1. None
     1. 1
@@ -395,8 +460,10 @@ Please rate each statement according to the given scales.
     1. 3
     1. 4
     1. 5 or More
+
 1. What is your age? (Enter a Numerical Value)
     - Your answer:
+
 1. The experiment was very interesting.
     1. Strongly Disagree
     1. Disagree
@@ -405,6 +472,7 @@ Please rate each statement according to the given scales.
     1. Somewhat Agree
     1. Agree
     1. Strongly Agree
+
 1. The instructions were easy to understand.
     1. Strongly Disagree
     1. Disagree
@@ -413,5 +481,6 @@ Please rate each statement according to the given scales.
     1. Somewhat Agree
     1. Agree
     1. Strongly Agree
+
 1. Please add any additional comments about the experiment below:
     - Your answer:
