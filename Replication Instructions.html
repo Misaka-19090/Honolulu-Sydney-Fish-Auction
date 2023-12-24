@@ -1,0 +1,689 @@
+<!DOCTYPE html><html><head>
+      <title>Replication Instructions</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\Misaka19090-\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\Misaka19090-\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<style type="text/css">
+    h1 { counter-reset: h2counter; }
+    h2 { counter-reset: h3counter; }
+    h3 { counter-reset: h4counter; }
+    h4 { counter-reset: h5counter; }
+    h5 { }
+    h2:before {
+      counter-increment: h2counter;
+      content: counter(h2counter) "\0000a0\0000a0";
+    }
+    h3:before {
+      counter-increment: h3counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "\0000a0\0000a0";
+    }
+    h4:before {
+      counter-increment: h4counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "\0000a0\0000a0";
+    }
+    h5:before {
+      counter-increment: h5counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "."
+                counter(h5counter) "\0000a0\0000a0";
+    }
+</style>
+<h1 id="documentation-for-replication-packages">Documentation For Replication Packages </h1>
+<h2 id="prerequisites">Prerequisites </h2>
+<p>You should have the following properly installed on your device:</p>
+<ul>
+<li><code>Python</code></li>
+<li><code>Jupyter Notebook</code></li>
+<li>Python packages
+<ul>
+<li><code>matplotlib</code></li>
+<li><code>numpy</code></li>
+<li><code>pandas</code></li>
+<li><code>scipy</code></li>
+<li><code>scikit-learn</code></li>
+<li><code>seaborn</code></li>
+<li><code>statsmodels</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="numerical-results">Numerical Results </h2>
+<h3 id="figure-1-figure-b1-b5">Figure 1, Figure B.1-B.5 </h3>
+<ol>
+<li>Open <code>Utility Difference.ipynb</code>.</li>
+<li>Import packages and run section <em>Main Program</em>.</li>
+<li>Run section <em>Computation</em> to generate numerical prediction data files (can take hours) <code>[n]_[aa]_[xxx].csv</code> where</li>
+</ol>
+<ul>
+<li><code>n</code> is the number of bidders</li>
+<li><code>aa</code> is the auction format where the Dutch auction is denoted by <code>da</code> and the Honolulu auction is denoted by <code>ha</code></li>
+<li><code>xxx</code> is the predicted auction characteristic where <code>ED, ER, EUa, EUb</code> stands for the expected duration, selling price, utility for bidders, utility for the auctioneer respectively.</li>
+</ul>
+<ol start="4">
+<li>Run section <em>Relative difference</em> and adjust functional arguments to get</li>
+</ol>
+<ul>
+<li>Figure 1
+<ul>
+<li><code>graphPctHeatmap(eval_n=50, eval_interval=0.02, type="ED")</code></li>
+<li><code>graphPctHeatmap(eval_n=50, eval_interval=0.02, type="ER")</code></li>
+<li><code>graphPctHeatmap(eval_n=50, eval_interval=0.02, type="EUa")</code></li>
+<li><code>graphPctHeatmap(eval_n=50, eval_interval=0.02, type="EUb")</code></li>
+</ul>
+</li>
+<li>Figure B.2
+<ul>
+<li><code>graphPctHeatmap2(eval_n=50, eval_interval=0.02, type="ED")</code></li>
+</ul>
+</li>
+<li>Figure B.3
+<ul>
+<li><code>graphPctHeatmap2(eval_n=50, eval_interval=0.02, type="ER")</code></li>
+</ul>
+</li>
+<li>Figure B.4
+<ul>
+<li><code>graphPctHeatmap2(eval_n=50, eval_interval=0.02, type="EUa")</code></li>
+</ul>
+</li>
+<li>Figure B.5
+<ul>
+<li><code>graphPctHeatmap2(eval_n=50, eval_interval=0.02, type="EUb")</code></li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Run section <em>Jumps in the optimal starting price <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span></em> to get</li>
+</ol>
+<ul>
+<li>Figure B.1</li>
+</ul>
+<h3 id="table-b1">Table B.1 </h3>
+<ol>
+<li>Open <code>Fish_Auction.ipynb</code>.</li>
+<li>Run section <em>Main program</em>.</li>
+<li>Run section <em>Outputs for research use -&gt; Table of concerned variables for parameters used in the experiment</em> to get</li>
+</ol>
+<ul>
+<li>Table B.1
+<ul>
+<li><code>table(a=1, b=0.45, c=0.95, list_n=[2, 5])</code> for columns 2L and 5L</li>
+<li><code>table(a=1, b=0.95, c=0.95, list_n=[2, 5])</code> for columns 2H and 5H</li>
+</ul>
+</li>
+</ul>
+<h2 id="experimental-results">Experimental Results </h2>
+<h3 id="have-all-data-files-ready">Have all data files ready </h3>
+<h4 id="raw-data">Raw data </h4>
+<p>The raw data of each experimental session is stored in <code>all_apps_wide_[yyyy-mm-dd-nn].csv</code>, where <code>yyyy-mm-dd</code> is the date of the session, <code>nn</code> is the session ID assigned by the experimenter. This all-in-one date file can be separated by app. Both formats of raw data are provided.</p>
+<div class="mermaid">flowchart LR
+  A["all_apps_wide_[yyyy-mm-dd-nn].csv"]
+  M1((" "))
+  B1["Dutch2_[yyyy-mm-dd-nn].csv"]
+  B2["Honolulu2_[yyyy-mm-dd-nn].csv"]
+  B3["Dutch5_[yyyy-mm-dd-nn].csv"]
+  B4["Honolulu5_[yyyy-mm-dd-nn].csv"]
+  B5["Feedback_Dutch_[yyyy-mm-dd-nn].csv"]
+  B6["Feedback_Honolulu_[yyyy-mm-dd-nn].csv"]
+
+  A--separated&lt;br/&gt; by app--&gt;M1
+  M1--&gt;B1
+  M1--&gt;B2
+  M1--&gt;B3
+  M1--&gt;B4
+  M1--&gt;B5
+  M1--&gt;B6
+</div><h4 id="process-raw-data">Process raw data </h4>
+<ol>
+<li>The following files should be put in the same folder:</li>
+</ol>
+<ul>
+<li><code>all_apps_wide_[yyyy-mm-dd-nn].csv</code></li>
+<li><code>Data Reformat.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Run <code>Data Reformat.ipynb</code> from the beginning to the second last section, change <code>str_date</code> accordingly for each session. You should get the following processed data files:</li>
+</ol>
+<ul>
+<li><code>all_apps_wide_[yyyy-mm-dd-nn].csv</code>
+<ul>
+<li><code>Dutch_new_[yyyy-mm-dd-nn].csv</code></li>
+<li><code>Honolulu_new_[yyyy-mm-dd-nn].csv</code>
+<ul>
+<li><code>Honolulu_rounded_and_accurate_[yyyy-mm-dd-nn].csv</code></li>
+</ul>
+</li>
+<li><code>Feedback_Dutch_new_[yyyy-mm-dd-nn].csv</code></li>
+<li><code>Feedback_Honolulu_new_[yyyy-mm-dd-nn].csv</code></li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Merge these session-wide files manually to get the following all-session processed data files:</li>
+</ol>
+<ul>
+<li><code>Dutch_new_all_session.csv</code></li>
+<li><code>Honolulu_new_all_session.csv</code>
+<ul>
+<li><code>Honolulu_rounded_and_accurate_all_session.csv</code></li>
+</ul>
+</li>
+<li><code>Feedback_Dutch_new_all_session.csv</code></li>
+<li><code>Feedback_Honolulu_new_all_session.csv</code></li>
+</ul>
+<ol start="4">
+<li>Run the last section of <code>Data Reformat.ipynb</code> to get the final version of processed data files:</li>
+</ol>
+<ul>
+<li><code>Dutch_new_all_session.csv</code>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+</ul>
+</li>
+<li><code>Honolulu_new_all_session.csv</code>
+<ul>
+<li><code>Honolulu_rounded_and_accurate_all_session.csv</code>
+<ul>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Feedback_Dutch_new_all_session.csv</code></li>
+<li><code>Feedback_Honolulu_new_all_session.csv</code></li>
+</ul>
+<h3 id="table-1">Table 1 </h3>
+<p>It’s basic experimental design and session information. No codes are provided.</p>
+<h3 id="table-2-table-5-table-d1-d3">Table 2, Table 5, Table D.1-D.3 </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+<li><code>Dominated behaviour.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Dominated behaviour.ipynb</code>.</li>
+<li>Import packages and data files, then run section <em>Three price dynamics in Honolulu</em> to get</li>
+</ol>
+<ul>
+<li>Table 2
+<ul>
+<li>“Actual” columns
+<ul>
+<li><code>priceDynamics(rmin=3, rmax=30, tol=2, is_actual=True)</code></li>
+</ul>
+</li>
+<li>“Predicted” columns
+<ul>
+<li><code>priceDynamics(rmin=3, rmax=30, tol=2, is_actual=False)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Table D.1
+<ul>
+<li>All treatments
+<ul>
+<li><code>signedRankTest(rmin=3, rmax=30, tol=2, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTest(rmin=3, rmax=30, tol=2, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>2-bidder
+<ul>
+<li><code>signedRankTestByNumber(rmin=3, rmax=30, tol=2, n=2, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTestByNumber(rmin=3, rmax=30, tol=2, n=2, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>5-bidder
+<ul>
+<li><code>signedRankTestByNumber(rmin=3, rmax=30, tol=2, n=5, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTestByNumber(rmin=3, rmax=30, tol=2, n=5, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>2H
+<ul>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=2, b=0.019, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=2, b=0.019, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>2L
+<ul>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=2, b=0.009, altH="greater", altD="greater", altE="less")</code></li>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=2, b=0.009, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>5H
+<ul>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=5, b=0.019, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=5, b=0.019, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+<li>5L
+<ul>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=5, b=0.009, altH="greater", altD="less", altE="less")</code></li>
+<li><code>signedRankTestByTreatment(rmin=3, rmax=30, tol=2, n=5, b=0.009, altH="two-sided", altD="two-sided", altE="two-sided")</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>Run section <em>SD &amp; WD decisions</em> to get</li>
+</ol>
+<ul>
+<li>Table 5, Table D.2
+<ul>
+<li>Dutch auction “Top” columns
+<ul>
+<li><code>tableSD(n=2, b=0.019, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableSD(n=2, b=0.009, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableSD(n=5, b=0.019, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableSD(n=5, b=0.009, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+</ul>
+</li>
+<li>Dutch auction “Bottom” columns
+<ul>
+<li><code>tableSD(n=2, b=0.019, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableSD(n=2, b=0.009, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableSD(n=5, b=0.019, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableSD(n=5, b=0.009, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+</ul>
+</li>
+<li>Honolulu auction “Top” columns
+<ul>
+<li><code>tableWD(n=2, b=0.019, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableWD(n=2, b=0.009, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableWD(n=5, b=0.019, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+<li><code>tableWD(n=5, b=0.009, rmin=3, rmax=30, qmin=0.501, qmax=1, tol=2)</code></li>
+</ul>
+</li>
+<li>Honolulu auction “Bottom” columns
+<ul>
+<li><code>tableWD(n=2, b=0.019, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableWD(n=2, b=0.009, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableWD(n=5, b=0.019, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+<li><code>tableWD(n=5, b=0.009, rmin=3, rmax=30, qmin=0, qmax=0.5, tol=2)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Table D.3
+<ul>
+<li>All treatments
+<ul>
+<li><code>signedRankUndominatedDutch(rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonolulu(rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>2-bidder
+<ul>
+<li><code>signedRankUndominatedDutchByNumber(n=2, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByNumber(n=2, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>5-bidder
+<ul>
+<li><code>signedRankUndominatedDutchByNumber(n=5, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByNumber(n=5, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>2H
+<ul>
+<li><code>signedRankUndominatedDutchByTreatment(n=2, b=0.019, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByTreatment(n=2, b=0.019, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>2L
+<ul>
+<li><code>signedRankUndominatedDutchByTreatment(n=2, b=0.009, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByTreatment(n=2, b=0.009, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>5H
+<ul>
+<li><code>signedRankUndominatedDutchByTreatment(n=5, b=0.019, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByTreatment(n=5, b=0.019, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+<li>5L
+<ul>
+<li><code>signedRankUndominatedDutchByTreatment(n=5, b=0.009, rmin=3, rmax=30, tol=2, alt="greater")</code></li>
+<li><code>signedRankUndominatedHonoluluByTreatment(n=5, b=0.009, rmin=3, rmax=30, tol=2, altDB="greater", altCL="greater", altCB="greater", altEL="greater", altDrop="greater")</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="table-3-figure-3-4-figure-7-figure-e1">Table 3, Figure 3-4, Figure 7, Figure E.1 </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+<li><code>Zero-cost prediction.ipynb</code></li>
+<li><code>Summary statistics.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Zero-cost prediction.ipynb</code> and run from the beginning to the end to generate two new data files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm_zerocost.csv</code></li>
+<li><code>Honolulu_paydiff_norm_zerocost.csv</code></li>
+</ul>
+<ol start="3">
+<li>Open <code>Summary statistics.ipynb</code>.</li>
+<li>Import packages and data files, then run section <em>Auction characteristics</em> to get</li>
+</ol>
+<ul>
+<li>Figure 3
+<ul>
+<li>Subsection <em>Efficiency</em></li>
+</ul>
+</li>
+<li>Figure 4(a), Figure E.1
+<ul>
+<li>Subsection <em>Duration</em></li>
+</ul>
+</li>
+<li>Figure 4(b)
+<ul>
+<li>Subsection <em>Revenue</em></li>
+</ul>
+</li>
+<li>Figure 4(c)
+<ul>
+<li>Subsection <em>Bidder utility</em></li>
+</ul>
+</li>
+<li>Figure 4(d)
+<ul>
+<li>Subsection <em>Auctioneer utility</em></li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Run subsection <em>Bid deviation -&gt; Top and bottom earners</em> to get</li>
+</ol>
+<ul>
+<li>Figure 7
+<ul>
+<li>Left panel
+<ul>
+<li><code>plotDbid()</code></li>
+</ul>
+</li>
+<li>Right panel
+<ul>
+<li><code>plotDstage()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="figure-5-figure-f1">Figure 5, Figure F.1 </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+<li><code>Test main effects.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Test main effects.ipynb</code>.</li>
+<li>Import packages and data files, then run section <em>Clustering Based On Similarity</em> to get</li>
+</ol>
+<ul>
+<li>Figure F.1
+<ul>
+<li>Subsection <em>K-means</em>
+<ul>
+<li><code>plotCluster(2, 0.019, 3)</code></li>
+<li><code>plotCluster(2, 0.009, 3)</code></li>
+<li><code>plotCluster(5, 0.019, 3)</code></li>
+<li><code>plotCluster(5, 0.009, 4)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Figure 5
+<ul>
+<li>Subsection <em>Percentage paydiff distribution</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="figure-10-11">Figure 10-11 </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Feedback_Dutch_new_all_session.csv.csv</code></li>
+<li><code>Feedback_Honolulu_new_all_session.csv.csv</code></li>
+<li><code>Feedback plots.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Feedback plots.ipynb</code> and run from the beginning to the end to get</li>
+</ol>
+<ul>
+<li>Figure 10
+<ul>
+<li>Section <em>Winner regret</em></li>
+</ul>
+</li>
+<li>Figure 11
+<ul>
+<li>Section <em>Loser regret</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="table-4-table-c1-c2">Table 4, Table C.1-C.2 </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+<li><code>Bootstrap estimation_auction characteristics.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Bootstrap estimation_auction characteristics.ipynb</code>.</li>
+<li>Import packages and data files, then run section <em>Functions</em> for preparation.</li>
+<li>Run section <em>Baseline Regression and Prediction</em> to get</li>
+</ol>
+<ul>
+<li>Table C.1
+<ul>
+<li>“Auctioneer payoff” columns
+<ul>
+<li>Subsection <em>Auctioneer utility -&gt; reg cost, 2 bidders</em></li>
+<li>Subsection <em>Auctioneer utility -&gt; reg cost, 5 bidders</em></li>
+</ul>
+</li>
+<li>“Buyer payoff” columns
+<ul>
+<li>Subsection <em>Bidder utility -&gt; reg cost, 2 bidders</em></li>
+<li>Subsection <em>Bidder utility -&gt; reg cost, 5 bidders</em></li>
+</ul>
+</li>
+<li>“Efficiency” columns
+<ul>
+<li>Subsection <em>Efficiency -&gt; reg cost, 2 bidders</em></li>
+<li>Subsection <em>Efficiency -&gt; reg cost, 5 bidders</em></li>
+<li>Subsection <em>Efficiency -&gt; pooled</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Table C.2
+<ul>
+<li>“Buyer payoff” columns
+<ul>
+<li>Subsection <em>Bidder utility -&gt; reg bidders, high cost</em></li>
+<li>Subsection <em>Bidder utility -&gt; reg bidders, low cost</em></li>
+</ul>
+</li>
+<li>“Auction duration” columns
+<ul>
+<li>Subsection <em>Auction duration -&gt; reg bidders, high cost</em></li>
+<li>Subsection <em>Auction duration -&gt; reg bidders, low cost</em></li>
+</ul>
+</li>
+<li>“Selling price” columns
+<ul>
+<li>Subsection <em>Selling price -&gt; reg bidders, high cost</em></li>
+<li>Subsection <em>Selling price -&gt; reg bidders, low cost</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Run section <em>Blocked Bootstrap</em> to get</li>
+</ol>
+<ul>
+<li>Table 4 (double-check Stata results, bootstrap results are different because of different random seeds)
+<ul>
+<li>“Efficiency” rows
+<ul>
+<li>Subsection <em>Efficiency pooled -&gt; H = D</em></li>
+<li>Subsection <em>Efficiency -&gt; H = D (high cost) for 2 bidders, H = D (low cost) for 2 bidders</em></li>
+<li>Subsection <em>Efficiency -&gt; H = D (high cost) for 5 bidders, H = D (low cost) for 5 bidders</em></li>
+</ul>
+</li>
+<li>“Duration” rows
+<ul>
+<li>Subsection <em>Auction duration-&gt; D &gt; H (2 bidders) for high cost, D &gt; H (5 bidders) for high cost</em></li>
+<li>Subsection <em>Auction duration-&gt; D &gt; H (2 bidders) for low cost, D &gt; H (5 bidders) for low cost</em></li>
+<li>Subsection <em>Auction duration-&gt; H/D (5 bidders) &gt; H/D (2 bidders) for high cost</em></li>
+<li>Subsection <em>Auction duration-&gt; H/D (5 bidders) &gt; H/D (2 bidders) for low cost</em></li>
+</ul>
+</li>
+<li>“Selling price” rows
+<ul>
+<li>Subsection <em>Selling price -&gt; H/D (5 bidders) = 0.988 for high cost, H/D (2 bidders) = 0.917 for high cost</em></li>
+<li>Subsection <em>Selling price -&gt; H/D (5 bidders) = 0.991 for low cost, H/D (2 bidders) = 1.011 for low cost</em></li>
+</ul>
+</li>
+<li>“Auctioneer utility” rows
+<ul>
+<li>Subsection <em>Auctioneer utility -&gt; H &gt; D (2 bidders) for high cost, H &gt; D (5 bidders) for high cost</em></li>
+<li>Subsection <em>Auctioneer utility -&gt; H &gt; D (2 bidders) for low cost, H &gt; D (5 bidders) for low cost</em></li>
+</ul>
+</li>
+<li>“Buyer utility” rows
+<ul>
+<li>Subsection <em>Bidder utility -&gt; H &gt; D (2 bidders) for high cost, H &gt; D (5 bidders) for high cost</em></li>
+<li>Subsection <em>Bidder utility -&gt; H &gt; D (2 bidders) for low cost, H &gt; D (5 bidders) for low cost</em></li>
+<li>Subsection <em>Bidder utility -&gt; H/D (high cost) &gt; H/D (low cost) for 2 bidders</em></li>
+<li>Subsection <em>Bidder utility -&gt; H/D (5 bidders) &lt; H/D (2 bidders) for high cost</em></li>
+<li>Subsection <em>Bidder utility -&gt; H/D (5 bidders) &lt; H/D (2 bidders) for low cost (mean and variance are not consistent)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="figure-7-p-values">Figure 7 p-values </h3>
+<ol>
+<li>Put the following files in the same folder:</li>
+</ol>
+<ul>
+<li><code>Dutch_paydiff_norm.csv</code></li>
+<li><code>Honolulu_paydiff_norm.csv</code></li>
+<li><code>Bootstrap estimation_individual behaviour.ipynb</code></li>
+</ul>
+<ol start="2">
+<li>Open <code>Bootstrap estimation_individual behaviour.ipynb</code>.</li>
+<li>Import packages.</li>
+<li>Run section <em>Top-bottom Data</em> to get</li>
+</ol>
+<ul>
+<li>Figure 7 p-values
+<ul>
+<li>Left panel
+<ul>
+<li>Subsection <em>Dutch auction bids</em></li>
+</ul>
+</li>
+<li>Right panel
+<ul>
+<li>Subsection <em>Dutch stage bids</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+}
+</script>
+    
+    
+    
+  
+    </body></html>
