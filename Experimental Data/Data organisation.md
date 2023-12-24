@@ -129,6 +129,8 @@ The table below explains newly added variable(s) calculated from raw data variab
 | &emsp;dropout_payoff | the player's payoff if he were to win the item at the displayed dropout price |
 | &emsp;dropout_price_accurate | the accurate price when the player clicked "Leave" on the contest stage or the english stage, or won the item |
 | &emsp;dropout_payoff_accurate | the player's payoff if he were to win the item at the accurate dropout price |
+| paydiff_norm | the average per period point deviations of bidder payoffs from the theoretical prediction by period |
+| paydiff_pct | the average percentage deviations of bidder payoffs from the theoretical prediction |
 
 ### Prediction variables
 
