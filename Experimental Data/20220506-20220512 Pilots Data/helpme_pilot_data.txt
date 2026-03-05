@@ -1,0 +1,3 @@
+These are the data from the first four sessions that we used as pilot to calibrate the experimental parameters.
+
+See [Footnote 20] in [Section 4] of the published version of the paper.
