@@ -1,47 +1,8 @@
-<style type="text/css">
-    h1 { counter-reset: h2counter; }
-    h2 { counter-reset: h3counter; }
-    h3 { counter-reset: h4counter; }
-    h4 { counter-reset: h5counter; }
-    h5 { counter-reset: h6counter; }
-    h6 { }
-    h2:before {
-      counter-increment: h2counter;
-      content: counter(h2counter) ".\0000a0\0000a0";
-    }
-    h3:before {
-      counter-increment: h3counter;
-      content: counter(h2counter) "."
-                counter(h3counter) ".\0000a0\0000a0";
-    }
-    h4:before {
-      counter-increment: h4counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) ".\0000a0\0000a0";
-    }
-    h5:before {
-      counter-increment: h5counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) ".\0000a0\0000a0";
-    }
-    h6:before {
-      counter-increment: h6counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) "."
-                counter(h6counter) ".\0000a0\0000a0";
-    }
-</style>
-
 # PLEASE READ ME FIRST
 
 ## About Replication Packages
 
-You can refer to `helpme_source_files_for_Figures_and_Tables_Feb_2026.docx` to quickly locate source files for tables and figures. 
+You can refer to `helpme_source_files_for_Figures_and_Tables_Feb_2026.docx` to quickly locate source files for tables and figures.
 
 ### Python Replication Package
 
@@ -61,9 +22,9 @@ You need to have the Python package `oTree` installed in your device to demo the
 
 ---
 
-# DATA ANALYSIS FILES FOR TABLES AND FIGURES
+## DATA ANALYSIS FILES FOR TABLES AND FIGURES
 
-## Main Text -- Figures
+### Main Text -- Figures
 
 - **Figure 1-2**: Predicted auction characteristics
   - **Python**: `Utility Difference.ipynb` → `Relative difference`
@@ -85,7 +46,7 @@ You need to have the Python package `oTree` installed in your device to demo the
 - **Figure 9-10** – Winner and loser regret
   - **Python**: `Feedback plots.ipynb`
 
-## Main Text -- Tables
+### Main Text -- Tables
 
 - **Table 2**: Experiment summary
 - **Table 3**: Price dynamics
@@ -100,7 +61,7 @@ You need to have the Python package `oTree` installed in your device to demo the
 - **Table 6** – Decision-outcome patterns in Honolulu auctions
   - **Stata**: `strategies_hnl-auctions.do`
 
-## Appendices -- Figures and Tables
+### Appendices -- Figures and Tables
 
 - **C – Numerical Results**
   - **Figure C.1**: Jumps in the optimal starting price
@@ -150,3 +111,16 @@ You need to have the Python package `oTree` installed in your device to demo the
   - **Table J.1**
     - **Python**: Acquired from Figure 9-10 plots (no p-value computed)
     - **Stata**: `behavioral_survey_analysis.do` (means and p-values for the test of no differences)
+
+---
+
+## Rights & Authorship
+
+This project accompanies an academic paper published in *Journal of Economic Theory*. The experimental program and replication packages are the intellectual property of the authors.
+
+**Authors:**
+
+- [Isa Hafalir](https://sites.google.com/site/isaemin/)
+- [Onur Kesten](https://profiles.sydney.edu.au/onur.kesten/)
+- [Katerina Sherstyuk](https://www2.hawaii.edu/~katyas/)
+- [Cong Tao](https://misaka-19090.github.io)
