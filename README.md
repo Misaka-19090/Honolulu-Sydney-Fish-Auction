@@ -2,7 +2,7 @@
 
 ## About data replication
 
-Please follow the instruction in `Replication Instructions.pdf` step by step. You may search for the instruction for specific tables or figures, but please ensure you have the program prerequisites and all data files ready.
+Please follow the instruction in `Replication Instructions.pdf` step by step. You may jump to subsections for specific tables or figures, but please ensure you have the program prerequisites and all data files ready.
 
 ## About data dictionary
 
