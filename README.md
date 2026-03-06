@@ -116,7 +116,7 @@ You need to have the Python package `oTree` installed in your device to demo the
 
 ## Rights & Authorship
 
-This project accompanies an academic paper published in *Journal of Economic Theory*. The experimental program and replication packages are the intellectual property of the authors.
+This project accompanies an academic paper [When speed is of essence: perishable goods auctions](https://doi.org/10.1016/j.jet.2026.106149) published in *Journal of Economic Theory*. The experimental program and replication packages are the intellectual property of the authors.
 
 **Authors:**
 
@@ -124,3 +124,5 @@ This project accompanies an academic paper published in *Journal of Economic The
 - [Onur Kesten](https://profiles.sydney.edu.au/onur.kesten/)
 - [Katerina Sherstyuk](https://www2.hawaii.edu/~katyas/)
 - [Cong Tao](https://misaka-19090.github.io)
+
+Hafalir, I., Kesten, O., Sherstyuk, K., & Tao, C. (2026). When speed is of essence: Perishable goods auctions. Journal of Economic Theory, 106149.
