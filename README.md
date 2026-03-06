@@ -125,4 +125,4 @@ This project accompanies an academic paper [When speed is of essence: perishable
 - [Katerina Sherstyuk](https://www2.hawaii.edu/~katyas/)
 - [Cong Tao](https://misaka-19090.github.io)
 
-Hafalir, I., Kesten, O., Sherstyuk, K., & Tao, C. (2026). When speed is of essence: Perishable goods auctions. Journal of Economic Theory, 106149.
+Hafalir, I., Kesten, O., Sherstyuk, K., & Tao, C. (2026). When speed is of essence: Perishable goods auctions. *Journal of Economic Theory*, 106149.
